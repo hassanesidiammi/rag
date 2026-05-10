@@ -21,3 +21,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Bind LlmClientInterface to whichever concrete client LlmClientFactory picks
+    # based on the LLM_PROVIDER env var.
+    App\Llm\LlmClientInterface:
+        factory: ['@App\Llm\LlmClientFactory', 'create']
